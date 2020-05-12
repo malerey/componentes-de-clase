@@ -14,16 +14,26 @@ import Card from './components/Card'
 // }
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mostrarCard: true,
+      infoQuePasoPorProps: 1,
+    }
 
-  handleClick = () => {
-    alert("Me hicieron clic")
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+ handleClick = () => {
+    this.setState({mostrarCard: false})
   }
 
   render() {
+    // aca podemos escribir js 
    return (
     <div className="App">
-       <button onClick={this.handleClick}>Clic</button>
-       <Card info="Hola"/>
+       <button onClick={this.handleClick}>Ocultar Card</button>
+       {this.state.mostrarCard && <Card info={"Hola"}/>}
     </div>
   )};
 }
